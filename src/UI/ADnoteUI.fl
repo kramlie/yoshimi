@@ -29,7 +29,7 @@ Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 This file is derivative of ZynAddSubFX original code.
 
-} {selected in_source in_header
+} {in_source in_header
 }
 
 decl {\#include <FL/Fl_Box.H>
@@ -2007,9 +2007,9 @@ if (pars->VoicePar[nvoice].PFMVoice >= 0) {
   }
 }
 
-class ADnoteUI {: {public PresetsUI_}
+class ADnoteUI {open : {public PresetsUI_}
 } {
-  Function {make_window()} {private
+  Function {make_window()} {open private
   } {
     comment {globalrandompan MUST be after globalwidth} {in_source in_header
     }
@@ -2020,14 +2020,14 @@ class ADnoteUI {: {public PresetsUI_}
     globalSeen = false;
     resui->resonancewindow->hide();
     o->hide();}
-      xywh {572 130 535 405} type Double hide resizable
+      xywh {890 430 575 405} type Double hide resizable
       code0 {o->copy_label(synth->getGuiMaster()->setPartWindowTitle("AddSynth Global").c_str());}
       code1 {addDW = 535; addDH = 405;}
       code2 {o->size_range(addDW, addDH, 0, 0, 0, 0, 1);}
     } {
       Fl_Group globalfreq {
         label FREQUENCY
-        xywh {5 255 525 115} box THIN_UP_BOX labelfont 1 labelsize 12 align 17
+        xywh {5 255 570 115} box THIN_UP_BOX labelfont 1 labelsize 12 align 17
       } {
         Fl_Group freqenv {
           label {ADSynth Global - Frequency Envelope}
@@ -2039,7 +2039,7 @@ class ADnoteUI {: {public PresetsUI_}
           label Octave
           callback {//
     send_data(0, ADDSYNTH::control::octave, o->value(), TOPLEVEL::type::Integer);}
-          tooltip Octave xywh {450 275 45 15} type Simple color 237 selection_color 0 labelsize 10 align 1 minimum -8 maximum 7 step 1 textfont 1 textsize 11
+          tooltip Octave xywh {495 275 45 15} type Simple color 237 selection_color 0 labelsize 10 align 1 minimum -8 maximum 7 step 1 textfont 1 textsize 11
           code0 {int k = pars->GlobalPar.PCoarseDetune / 1024; if (k >= 8) k -= 16;}
           code2 {o->value(k);}
         }
@@ -2047,14 +2047,14 @@ class ADnoteUI {: {public PresetsUI_}
           label {Coarse det.}
           callback {//
     send_data(0, ADDSYNTH::control::coarseDetune, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Coarse Detune} xywh {455 345 60 20} labelsize 10 align 5 minimum -64 maximum 63 step 1 textfont 1 textsize 11
+          tooltip {Coarse Detune} xywh {500 345 60 20} labelsize 10 align 5 minimum -64 maximum 63 step 1 textfont 1 textsize 11
           code0 {int k = pars->GlobalPar.PCoarseDetune % 1024; if (k >= 512) k -= 1024;}
           code2 {o->value(k);}
           code3 {o->lstep(10);}
         }
         Fl_Group freqlfo {
           label {Frequency LFO     }
-          xywh {215 295 230 70} box FLAT_BOX color 47 labelsize 12 align 144
+          xywh {215 295 275 70} box FLAT_BOX color 47 labelsize 12 align 144
           code0 {o->init(pars->GlobalPar.FreqLfo, npart, kititem, 0, 1);}
           class LFOUI
         } {}
@@ -2062,7 +2062,7 @@ class ADnoteUI {: {public PresetsUI_}
           callback {//
             detunevalueoutput->do_callback();
             send_data(0, ADDSYNTH::control::detuneFrequency, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Fine Detune (cents)} xywh {57 275 385 15} type {Horz Knob} box THIN_DOWN_BOX minimum -8192 maximum 8191 step 1
+          tooltip {Fine Detune (cents)} xywh {57 275 433 15} type {Horz Knob} box THIN_DOWN_BOX minimum -8192 maximum 8191 step 1
           code0 {o->value(pars->GlobalPar.PDetune - 8192);}
           class mwheel_slider_rev
         }
@@ -2077,7 +2077,7 @@ class ADnoteUI {: {public PresetsUI_}
           label {Detune Type}
           callback {//
     send_data(0, ADDSYNTH::control::detuneType, o->value() + 1, TOPLEVEL::type::Integer);}
-          xywh {450 315 75 15} down_box BORDER_BOX labelsize 10 align 5 textfont 1 textsize 10
+          xywh {495 315 75 15} down_box BORDER_BOX labelsize 10 align 5 textfont 1 textsize 10
           code1 {o->value(pars->GlobalPar.PDetuneType-1);}
         } {
           MenuItem L35cents {
@@ -2101,7 +2101,7 @@ class ADnoteUI {: {public PresetsUI_}
           label relBW
           callback {//
     send_data(0, ADDSYNTH::control::relativeBandwidth, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Bandwidth - modify the relative fine detune of the voices} xywh {500 270 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
+          tooltip {Bandwidth - modify the relative fine detune of the voices} xywh {545 270 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
           code0 {o->value(pars->GlobalPar.PBandwidth);}
           class WidgetPDial
         }
@@ -2110,8 +2110,8 @@ class ADnoteUI {: {public PresetsUI_}
         xywh {8 7 233 68} box PLASTIC_THIN_UP_BOX color 223
       }
       Fl_Group amplitudegrp {
-        label AMPLITUDE
-        xywh {5 5 240 250} box THIN_UP_FRAME labelfont 1 labelsize 12 align 17
+        label AMPLITUDE open
+        xywh {5 5 285 250} box THIN_UP_FRAME labelfont 1 labelsize 12 align 17
       } {
         Fl_Dial globalvolume {
           label Volume
@@ -2209,7 +2209,7 @@ send_data(0, ADDSYNTH::control::punchVelocity, o->value(), TOPLEVEL::type::Integ
         } {}
         Fl_Group amplfo {
           label {Amplitude LFO          }
-          xywh {10 145 230 70} box FLAT_BOX color 47 labelsize 12 align 144
+          xywh {10 145 275 70} box FLAT_BOX color 47 labelsize 12 align 144
           code0 {o->init(pars->GlobalPar.AmpLfo, npart, kititem, 0, 0);}
           class LFOUI
         } {}
@@ -2226,23 +2226,23 @@ send_data(0, ADDSYNTH::control::randomGroup, o->value(), TOPLEVEL::type::Integer
       }
       Fl_Group filtergrp {
         label FILTER
-        xywh {245 5 285 250} box THIN_UP_BOX labelfont 1 labelsize 12 align 17
+        xywh {290 5 285 250} box THIN_UP_BOX labelfont 1 labelsize 12 align 17
       } {
         Fl_Group filterenv {
           label {ADSynth Global - Filter Envelope}
-          xywh {250 110 275 70} box FLAT_BOX color 51 labelsize 12 align 144
+          xywh {295 110 275 70} box FLAT_BOX color 51 labelsize 12 align 144
           code0 {o->init(pars->GlobalPar.FilterEnvelope, npart, kititem, 0, 2);}
           class EnvelopeUI
         } {}
         Fl_Group filterlfo {
           label {Filter LFO}
-          xywh {250 180 230 70} box FLAT_BOX color 47 labelsize 12 align 144
+          xywh {295 180 275 70} box FLAT_BOX color 47 labelsize 12 align 144
           code0 {o->init(pars->GlobalPar.FilterLfo, npart, kititem, 0, 2);}
           class LFOUI
         } {}
         Fl_Group filterui {
           label {ADsynth Global - Filter}
-          xywh {250 35 275 75} box FLAT_BOX color 50 labelsize 12 align 144
+          xywh {295 35 275 75} box FLAT_BOX color 50 labelsize 12 align 144
           code0 {o->init(pars->GlobalPar.GlobalFilter, &pars->GlobalPar.PFilterVelocityScale, &pars->GlobalPar.PFilterVelocityScaleFunction, npart, kititem, 0);}
           class FilterUI
         } {}
