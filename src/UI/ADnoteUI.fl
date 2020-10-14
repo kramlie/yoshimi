@@ -2107,17 +2107,17 @@ class ADnoteUI {open : {public PresetsUI_}
         }
       }
       Fl_Box {} {
-        xywh {8 7 233 68} box PLASTIC_THIN_UP_BOX color 223
+        xywh {10 7 275 68} box PLASTIC_THIN_UP_BOX color 223
       }
       Fl_Group amplitudegrp {
-        label AMPLITUDE open
+        label AMPLITUDE open selected
         xywh {5 5 285 250} box THIN_UP_FRAME labelfont 1 labelsize 12 align 17
       } {
         Fl_Dial globalvolume {
           label Volume
           callback {//
 send_data(0, ADDSYNTH::control::volume, o->value(), TOPLEVEL::type::Integer);}
-          tooltip Volume xywh {20 22 35 35} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
+          tooltip Volume xywh {30 22 35 35} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
           code0 {o->setValueType(VC_InstrumentVolume);}
           code1 {o->value(pars->GlobalPar.PVolume);}
           class WidgetPDial
@@ -2125,7 +2125,7 @@ send_data(0, ADDSYNTH::control::volume, o->value(), TOPLEVEL::type::Integer);}
         Fl_Dial vsns {
           label {Vel Sens}
           callback {send_data(0, ADDSYNTH::control::velocitySense, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Velocity Sensing Function - rightmost/max to disable} xywh {70 22 35 35} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
+          tooltip {Velocity Sensing Function - rightmost/max to disable} xywh {85 22 35 35} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
           code0 {o->value(pars->GlobalPar.PAmpVelocityScaleFunction);}
           code2 {o->setValueType(VC_AmpVelocitySense);}
           class WidgetPDial
@@ -2134,7 +2134,7 @@ send_data(0, ADDSYNTH::control::volume, o->value(), TOPLEVEL::type::Integer);}
           label Pan
           callback {//
     send_data(0, ADDSYNTH::control::panning, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Global panning} xywh {135 22 35 35} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
+          tooltip {Global panning} xywh {155 22 35 35} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
           code0 {o->setValueType(VC_PanningStd);}
           code1 {o->value(pars->GlobalPar.PPanning);}
           class WidgetPDial
@@ -2143,7 +2143,7 @@ send_data(0, ADDSYNTH::control::volume, o->value(), TOPLEVEL::type::Integer);}
           label Width
           callback {//
     send_data(0, ADDSYNTH::control::randomWidth, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Global random width} xywh {195 22 35 35} box ROUND_UP_BOX labelsize 10 maximum 63 step 1 value 63
+          tooltip {Global random width} xywh {235 22 35 35} box ROUND_UP_BOX labelsize 10 maximum 63 step 1 value 63
           code0 {o->setValueType(VC_PanningRandom);}
           code1 {o->value(pars->GlobalPar.PWidth);}
           class WidgetPDial
@@ -2157,7 +2157,7 @@ send_data(0, ADDSYNTH::control::volume, o->value(), TOPLEVEL::type::Integer);}
         else
             globalwidth->activate();
         send_data(0, ADDSYNTH::control::enableRandomPan, tmp, TOPLEVEL::type::Integer);}
-          tooltip {Enable random panning} xywh {175 31 15 15} down_box DOWN_BOX color 48 labelsize 11 align 1
+          tooltip {Enable random panning} xywh {205 31 15 15} down_box DOWN_BOX color 48 labelsize 11 align 1
           code0 {o->value(pars->GlobalPar.PRandom);}
           code1 {if (o->value() == 0) globalwidth->deactivate(); else globalwidth->activate();}
         }
@@ -2165,7 +2165,7 @@ send_data(0, ADDSYNTH::control::volume, o->value(), TOPLEVEL::type::Integer);}
           label {D.Pop}
           callback {//
 send_data(0, ADDSYNTH::control::dePop, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Pop Suppression} xywh {85 227 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
+          tooltip {Pop Suppression} xywh {130 227 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
           code0 {o->value(pars->GlobalPar.Fadein_adjustment);}
           class WidgetPDial
         }
@@ -2173,7 +2173,7 @@ send_data(0, ADDSYNTH::control::dePop, o->value(), TOPLEVEL::type::Integer);}
           label {P.Str.}
           callback {//
 send_data(0, ADDSYNTH::control::punchStrength, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Punch Strength} xywh {125 227 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
+          tooltip {Punch Strength} xywh {170 227 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
           code0 {o->value(pars->GlobalPar.PPunchStrength);}
           class WidgetPDial
         }
@@ -2181,7 +2181,7 @@ send_data(0, ADDSYNTH::control::punchStrength, o->value(), TOPLEVEL::type::Integ
           label {P.t.}
           callback {//
 send_data(0, ADDSYNTH::control::punchDuration, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Punch Time (duration)} xywh {155 227 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
+          tooltip {Punch Time (duration)} xywh {200 227 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
           code0 {o->value(pars->GlobalPar.PPunchTime);}
           class WidgetPDial
         }
@@ -2189,7 +2189,7 @@ send_data(0, ADDSYNTH::control::punchDuration, o->value(), TOPLEVEL::type::Integ
           label {P.Stc.}
           callback {//
 send_data(0, ADDSYNTH::control::punchStretch, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Punch Stretch} xywh {185 227 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
+          tooltip {Punch Stretch} xywh {230 227 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
           code0 {o->value(pars->GlobalPar.PPunchStretch);}
           class WidgetPDial
         }
@@ -2197,7 +2197,7 @@ send_data(0, ADDSYNTH::control::punchStretch, o->value(), TOPLEVEL::type::Intege
           label {P.Vel.}
           callback {//
 send_data(0, ADDSYNTH::control::punchVelocity, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Punch Velocity Sensing} xywh {215 227 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
+          tooltip {Punch Velocity Sensing} xywh {260 227 25 25} box ROUND_UP_BOX labelsize 10 align 1 maximum 127 step 1
           code0 {o->value(pars->GlobalPar.PPunchVelocitySensing);}
           class WidgetPDial
         }
@@ -2221,7 +2221,7 @@ send_data(0, ADDSYNTH::control::randomGroup, o->value(), TOPLEVEL::type::Integer
           code0 {o->value(pars->GlobalPar.Hrandgrouping);}
         }
         Fl_Box {} {
-          xywh {119 21 4 47} box THIN_DOWN_FRAME
+          xywh {135 21 4 47} box THIN_DOWN_FRAME
         }
       }
       Fl_Group filtergrp {
@@ -2322,7 +2322,7 @@ send_data(0, ADDSYNTH::control::stereo, o->value(), TOPLEVEL::type::Integer);}
                 else
                     synth->getGuiMaster()->partui->instrumenteditwindow->show();
             }}
-        tooltip {Right click: also reopen previous} xywh {476 375 54 25} box THIN_UP_BOX labelfont 1 labelsize 12
+        tooltip {Right click: also reopen previous} xywh {517 375 54 25} box THIN_UP_BOX labelfont 1 labelsize 12
       }
       Fl_Button resonance {
         label Resonance
@@ -2336,12 +2336,12 @@ send_data(0, ADDSYNTH::control::stereo, o->value(), TOPLEVEL::type::Integer);}
       Fl_Button globalcopy {
         label C
         callback {synth->getGuiMaster()->getPresetsUi()->copy(pars);}
-        xywh {414 380 25 15} box THIN_UP_BOX color 179 labelfont 1 labelsize 11 labelcolor 7
+        xywh {455 380 25 15} box THIN_UP_BOX color 179 labelfont 1 labelsize 11 labelcolor 7
       }
       Fl_Button globalpaste {
         label P
         callback {synth->getGuiMaster()->getPresetsUi()->paste(pars,this);}
-        xywh {444 380 25 15} box THIN_UP_BOX color 179 labelfont 1 labelsize 11 labelcolor 7
+        xywh {485 380 25 15} box THIN_UP_BOX color 179 labelfont 1 labelsize 11 labelcolor 7
       }
     }
     Fl_Window ADnoteVoice {
