@@ -35,7 +35,6 @@ add_definitions(-Wall)
 # vvv
 #add_definitions(-Wpedantic) # full ISO spec
 #add_definitions(-Werror) # warnings as errors
-add_definitions(-Wfatal-errors) # stop on first
 add_definitions(-Werror=format-security)
 add_definitions(-Wextra)
 add_definitions(-Wno-vla) # Nothing wrong with variable length arrays
