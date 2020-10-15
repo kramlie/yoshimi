@@ -80,7 +80,7 @@ pars=NULL;} {}
   }
   Function {make_window()} {} {
     Fl_Window lfoui {
-      xywh {965 626 275 70} type Double color 50 labelfont 1 labelsize 12 hide resizable
+      xywh {1182 491 275 70} type Double color 50 labelfont 1 labelsize 12 hide resizable
       class Fl_Group
     } {
       Fl_Group lfoparamswindow {
@@ -89,13 +89,13 @@ pars=NULL;} {}
       } {
         Fl_Check_Button bpm {
           label BPM
-          xywh {145 30 45 15} down_box DOWN_BOX labelsize 10
+          xywh {230 5 45 15} down_box DOWN_BOX labelsize 10
         }
         Fl_Check_Button continous {
           label {Cont.}
           callback {//
           send_data(0, group, LFOINSERT::control::continuous, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Continuous LFO} xywh {145 45 15 15} down_box DOWN_BOX labelsize 10
+          tooltip {Continuous LFO} xywh {230 20 15 15} down_box DOWN_BOX labelsize 10
         }
         Fl_Dial freq {
           label {Freq.}
@@ -136,7 +136,7 @@ pars=NULL;} {}
           label Type
           callback {//
           send_data(0, group, LFOINSERT::control::type, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {LFO function} xywh {130 5 50 15} down_box BORDER_BOX labelsize 9 align 2 textsize 8
+          tooltip {LFO function} xywh {220 50 50 15} down_box BORDER_BOX labelsize 9 align 2 textsize 8
         } {
           MenuItem Lsine {
             label SINE
@@ -181,13 +181,13 @@ pars=NULL;} {}
         }
         Fl_Group {} {
           label {Rand.} open
-          xywh {215 10 55 55} box GTK_UP_FRAME color 223 labelsize 10 align 17
+          xywh {140 15 55 50} box GTK_UP_FRAME labelsize 10 align 17
         } {
           Fl_Dial randomness {
             label {Amp.}
             callback {//
           send_data(0, group, LFOINSERT::control::amplitudeRandomness, o->value(), TOPLEVEL::type::Integer);}
-            tooltip {LFO Amplitude Randomness} xywh {220 30 20 20} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
+            tooltip {LFO Amplitude Randomness} xywh {145 30 20 20} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
             code1 {o->setValueType(VC_percent127);}
             class WidgetPDial
           }
@@ -195,7 +195,7 @@ pars=NULL;} {}
             label {Freq.}
             callback {//
           send_data(0, group, LFOINSERT::control::frequencyRandomness, o->value(), TOPLEVEL::type::Integer);}
-            tooltip {LFO Frequency Randomness} xywh {245 30 20 20} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
+            tooltip {LFO Frequency Randomness} xywh {170 30 20 20} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
             code1 {o->setValueType(VC_percent127);}
             class WidgetPDial
           }
@@ -204,7 +204,7 @@ pars=NULL;} {}
           label {Str.}
           callback {//
           send_data(0, group, LFOINSERT::control::stretch, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {LFO frequency stretch} xywh {190 30 20 20} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
+          tooltip {LFO frequency stretch} xywh {200 30 20 20} box ROUND_UP_BOX labelsize 10 maximum 127 step 1
           code1 {o->setValueType(VC_LFOStretch);}
           class WidgetPDial
         }
@@ -212,13 +212,13 @@ pars=NULL;} {}
           label C
           callback {//
           synth->getGuiMaster()->getPresetsUi()->copy(pars);}
-          xywh {180 5 15 15} box THIN_UP_BOX color 179 labelfont 1 labelsize 10 labelcolor 7
+          xywh {195 5 15 15} box THIN_UP_BOX color 179 labelfont 1 labelsize 10 labelcolor 7
         }
         Fl_Button lfoP {
           label P
           callback {//
           synth->getGuiMaster()->getPresetsUi()->paste(pars,this);}
-          xywh {197 5 15 15} box THIN_UP_BOX color 179 labelfont 1 labelsize 10 labelcolor 7
+          xywh {212 5 15 15} box THIN_UP_BOX color 179 labelfont 1 labelsize 10 labelcolor 7
         }
       }
     }

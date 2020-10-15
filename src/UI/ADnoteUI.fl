@@ -2053,7 +2053,7 @@ class ADnoteUI {open : {public PresetsUI_}
           code3 {o->lstep(10);}
         }
         Fl_Group freqlfo {
-          label {Frequency LFO     }
+          label {Frequency LFO} selected
           xywh {215 295 275 70} box FLAT_BOX color 47 labelsize 12 align 144
           code0 {o->init(pars->GlobalPar.FreqLfo, npart, kititem, 0, 1);}
           class LFOUI
@@ -2110,7 +2110,7 @@ class ADnoteUI {open : {public PresetsUI_}
         xywh {10 7 275 68} box PLASTIC_THIN_UP_BOX color 223
       }
       Fl_Group amplitudegrp {
-        label AMPLITUDE open selected
+        label AMPLITUDE open
         xywh {5 5 285 250} box THIN_UP_FRAME labelfont 1 labelsize 12 align 17
       } {
         Fl_Dial globalvolume {
@@ -2208,7 +2208,7 @@ send_data(0, ADDSYNTH::control::punchVelocity, o->value(), TOPLEVEL::type::Integ
           class EnvelopeUI
         } {}
         Fl_Group amplfo {
-          label {Amplitude LFO          }
+          label {Amplitude LFO}
           xywh {10 145 275 70} box FLAT_BOX color 47 labelsize 12 align 144
           code0 {o->init(pars->GlobalPar.AmpLfo, npart, kititem, 0, 0);}
           class LFOUI
