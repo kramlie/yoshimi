@@ -89,13 +89,15 @@ pars=NULL;} {}
       } {
         Fl_Check_Button bpm {
           label BPM
-          xywh {230 5 45 15} down_box DOWN_BOX labelsize 10
+          tooltip {Lock LFO frequency to a multiple of the BPM.} xywh {230 5 45 15} down_box DOWN_BOX labelsize 10
         }
         Fl_Check_Button continous {
           label {Cont.}
           callback {//
-          send_data(0, group, LFOINSERT::control::continuous, o->value(), TOPLEVEL::type::Integer);}
-          tooltip {Continuous LFO} xywh {230 20 15 15} down_box DOWN_BOX labelsize 10
+          send_data(0, group, LFOINSERT::control::continuous, o->value(), TOPLEVEL::type::Integer);} selected
+          tooltip {Continuous LFO
+
+Run the LFO continuously even when the sound is not playing. If BPM is on, then the LFO phase will be reset when the song position is changed.} xywh {230 20 15 15} down_box DOWN_BOX labelsize 10
         }
         Fl_Dial freq {
           label {Freq.}
